@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useQueries } from 'react-query'
 import Layout from '../components/layout'
 import useNames from '../hooks/use-names'
+import useDesign from '../hooks/use-design'
 import { fetchPosts } from '../utils/fetch-posts'
 import Post from '../components/post'
 
@@ -15,6 +16,7 @@ const ErrorMessage = ({ message }) => (
 
 const Home = () => {
   const [names] = useNames()
+  const [design] = useDesign()
   const results = useQueries(
     names.map((name) => {
       return {
@@ -22,6 +24,7 @@ const Home = () => {
         queryFn: () => fetchPosts(name.id),
         refetchOnMount: true,
         refetchOnWindowFocus: true,
+        staleTime: 1000 * 60 * 60 * 24, // 24 hours
       }
     })
   )
@@ -51,16 +54,16 @@ const Home = () => {
 
   return (
     <Layout>
-      <div className="grid gap-4 grid-cols-1">
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {sorted.map((p) => (
           <Post
             key={`${p.shortcode}-${p.timestamp}`}
-            description={p.description}
             owner={p.owner}
             picture={p.picture}
             shortcode={p.shortcode}
             timestamp={p.timestamp}
             dimensions={p.dimensions}
+            isMinimal={design.minimal}
           />
         ))}
       </div>

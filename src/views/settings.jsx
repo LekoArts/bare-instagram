@@ -2,13 +2,16 @@ import * as React from 'react'
 import { useQuery } from 'react-query'
 import Layout from '../components/layout'
 import useNames from '../hooks/use-names'
+import useDesign from '../hooks/use-design'
 import { fetchProfile } from '../utils/fetch-profile'
 import Plus from '../icons/plus'
 import Delete from '../icons/delete'
+import Checkbox from '../components/checkbox'
 
 const Settings = () => {
   const [query, setQuery] = React.useState('')
   const [names, setNames] = useNames()
+  const [design, setDesign] = useDesign()
 
   const { status, error, isLoading, refetch } = useQuery(
     ['profile-information', query],
@@ -36,14 +39,19 @@ const Settings = () => {
     setNames(newNames)
   }
 
+  const handleDesignChange = (e) => {
+    setDesign({ ...design, [e.target.name]: e.target.checked })
+  }
+
   return (
     <Layout>
+      <h2 className="sr-only">Usernames settings</h2>
       <form onSubmit={addName} className="flex flex-col">
         <label
-          htmlFor="usernames"
+          htmlFor="add-new-username"
           className="mb-2 font-medium text-black text-xl dark:text-white"
         >
-          Usernames
+          Add user
         </label>
         <div className="flex flex-nowrap flex-row">
           <input
@@ -51,8 +59,8 @@ const Settings = () => {
             onChange={(e) => setQuery(e.target.value)}
             className="bg-gray-100 dark:bg-gray-600 rounded px-2 py-1 flex-1 text-gray-800 dark:text-gray-100"
             type="text"
-            name="usernames"
-            id="usernames"
+            name="add-new-username"
+            id="add-new-username"
             required
           />
           <button
@@ -64,13 +72,12 @@ const Settings = () => {
           </button>
         </div>
       </form>
-      <hr className="mt-6 dark:border-gray-700" />
       {status === 'error' && (
-        <div className="text-sm px-2 py-2 mt-2 bg-red-100 rounded">
+        <div className="text-sm text-black px-2 py-2 mt-4 bg-red-100 rounded">
           {error.message}
         </div>
       )}
-      <div className="flex flex-col space-y-3 mt-6">
+      <div className="flex flex-col space-y-3 mt-8">
         {names.map((n, index) => (
           <div
             key={`names-list-${n.id}-${index}`}
@@ -99,6 +106,21 @@ const Settings = () => {
           <div className="text-center font-medium">Loading information...</div>
         )}
       </div>
+      <hr className="mt-12 mb-6 dark:border-gray-700" />
+      <h2 className="mb-2 font-medium text-black text-xl dark:text-white">
+        Design
+      </h2>
+      <label
+        htmlFor="minimal"
+        className="flex flex-row flex-nowrap justify-between"
+      >
+        <span>Use a minimal design</span>
+        <Checkbox
+          name="minimal"
+          checked={design.minimal}
+          onChange={handleDesignChange}
+        />
+      </label>
     </Layout>
   )
 }

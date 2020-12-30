@@ -13,12 +13,8 @@ const fetchPosts = async (input) => {
 
   const rawPosts = user.edge_owner_to_timeline_media.edges
   const posts = rawPosts.map(({ node: r }) => {
-    const d = r.edge_media_to_caption.edges
-    const hasNoDesc = d.length === 0
-
     return {
       shortcode: r.shortcode,
-      description: hasNoDesc ? '' : d[0].node.text.split(`#`)[0],
       timestamp: r.taken_at_timestamp,
       dimensions: {
         height: r.dimensions.height,
