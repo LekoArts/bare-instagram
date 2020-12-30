@@ -110,17 +110,12 @@ const Settings = () => {
       <h2 className="mb-2 font-medium text-black text-xl dark:text-white">
         Design
       </h2>
-      <label
-        htmlFor="minimal"
-        className="flex flex-row flex-nowrap justify-between"
-      >
-        <span>Use a minimal design</span>
-        <Checkbox
-          name="minimal"
-          checked={design.minimal}
-          onChange={handleDesignChange}
-        />
-      </label>
+      <Checkbox
+        desc="Use a minimal design"
+        onChange={handleDesignChange}
+        checked={design.minimal}
+        name="minimal"
+      />
     </Layout>
   )
 }
