@@ -1,7 +1,11 @@
 const fetchPosts = async (input) => {
-  const res = await fetch(`https://instagram.com/graphql/query/?query_id=17888483320059182&variables={"id":"${input}","first":100,"after":null}`)
+  const res = await fetch(
+    `https://instagram.com/graphql/query/?query_id=17888483320059182&variables={"id":"${input}","first":100,"after":null}`
+  )
   const json = await res.json()
-  const { data: { user } } = json
+  const {
+    data: { user },
+  } = json
 
   if (!user) {
     throw new Error(`Couldn't find any posts for ${input}`)

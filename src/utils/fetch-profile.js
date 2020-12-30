@@ -4,7 +4,9 @@ const fetchProfile = async (input) => {
   const { graphql } = json
 
   if (!graphql) {
-    throw new Error(`Couldn't find "${input}". Are you sure this is the right name?`)
+    throw new Error(
+      `Couldn't find "${input}". Are you sure this is the right name?`
+    )
   }
 
   const {

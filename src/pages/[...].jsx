@@ -1,16 +1,12 @@
 import * as React from 'react'
 import { Router } from '@reach/router'
 import { Helmet } from 'react-helmet'
-import {
-  QueryClient,
-  QueryClientProvider,
-} from 'react-query'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { persistWithLocalStorage } from 'react-query/persist-localstorage-experimental'
-import { ReactQueryDevtools } from "react-query/devtools";
+import { ReactQueryDevtools } from 'react-query/devtools'
 import Home from '../views/home'
 import Settings from '../views/settings'
 import Navigation from '../components/navigation'
-import OfflineNotice from '../components/offline-notice'
 
 const queryClient = new QueryClient()
 persistWithLocalStorage(queryClient)
@@ -23,13 +19,15 @@ const App = () => {
         <html lang="en-US" />
         <title>Bare Instagram</title>
       </Helmet>
-      <OfflineNotice />
       <Router>
         <Home path="/" />
         <Settings path="/settings" />
       </Router>
       <Navigation />
-      <ReactQueryDevtools position="top-left" panelProps={{ style: { bottom: '50px' } }} />
+      <ReactQueryDevtools
+        position="top-left"
+        panelProps={{ style: { bottom: '50px' } }}
+      />
     </QueryClientProvider>
   )
 }
