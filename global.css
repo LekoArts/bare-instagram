@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+nav {
+  backdrop-filter: blur(8px);
+  box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.2);
+}
+
+nav a {
+  transition: all 0.3s ease-in-out;
+}
+
+nav [aria-current="page"] {
+  font-weight: bold;
+}
