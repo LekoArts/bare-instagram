@@ -54,16 +54,23 @@ const Home = () => {
 
   return (
     <Layout>
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div
+        className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        style={{ gridGap: design.gapless ? 0 : undefined }}
+      >
         {sorted.map((p) => (
           <Post
             key={`${p.shortcode}-${p.timestamp}`}
             owner={p.owner}
             picture={p.picture}
+            description={p.description}
             shortcode={p.shortcode}
             timestamp={p.timestamp}
             dimensions={p.dimensions}
             isMinimal={design.minimal}
+            isGapless={design.gapless}
+            isVideo={p.isVideo}
+            isSidecar={p.isSidecar}
           />
         ))}
       </div>

@@ -5,7 +5,7 @@
   "description": "bare-instagram",
   "author": "LekoArts",
   "keywords": [
-    "gatsby"
+    "instagram"
   ],
   "scripts": {
     "develop": "gatsby develop",

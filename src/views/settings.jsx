@@ -7,6 +7,7 @@ import { fetchProfile } from '../utils/fetch-profile'
 import Plus from '../icons/plus'
 import Delete from '../icons/delete'
 import Checkbox from '../components/checkbox'
+import Iconography from '../components/iconography'
 
 const Settings = () => {
   const [query, setQuery] = React.useState('')
@@ -62,11 +63,13 @@ const Settings = () => {
             name="add-new-username"
             id="add-new-username"
             required
+            disabled={isLoading}
           />
           <button
+            disabled={isLoading}
             aria-label="Add username to list"
             type="submit"
-            className="px-2 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded ml-4"
+            className="px-2 py-2 disabled:opacity-50 bg-blue-500 dark:bg-blue-600 text-white rounded ml-4"
           >
             <Plus />
           </button>
@@ -110,12 +113,41 @@ const Settings = () => {
       <h2 className="mb-2 font-medium text-black text-xl dark:text-white">
         Design
       </h2>
-      <Checkbox
-        desc="Use a minimal design"
-        onChange={handleDesignChange}
-        checked={design.minimal}
-        name="minimal"
-      />
+      <div className="flex flex-col space-y-3">
+        <Checkbox
+          desc="Hide post information"
+          onChange={handleDesignChange}
+          checked={design.minimal}
+          name="minimal"
+        />
+        <Checkbox
+          desc="Remove gap between posts"
+          onChange={handleDesignChange}
+          checked={design.gapless}
+          name="gapless"
+        />
+      </div>
+      <hr className="mt-12 mb-6 dark:border-gray-700" />
+      <h2 className="mb-2 font-medium text-black text-xl dark:text-white">
+        Information
+      </h2>
+      <p>
+        This application is not affiliated with Instagram and solely for
+        educational purposes.{' '}
+        <a
+          className="underline"
+          href="https://github.com/LekoArts/bare-instagram"
+          target="_blank"
+          rel="noreferrer nofollow noopener"
+        >
+          Source code at GitHub
+        </a>
+        .
+      </p>
+      <h3 className="mt-4 mb-2 font-medium text-black text-lg dark:text-white">
+        Iconography
+      </h3>
+      <Iconography />
     </Layout>
   )
 }

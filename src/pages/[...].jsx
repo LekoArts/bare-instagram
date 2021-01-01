@@ -7,8 +7,14 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import Home from '../views/home'
 import Settings from '../views/settings'
 import Navigation from '../components/navigation'
+import NotFoundPage from './404'
 
 const queryClient = new QueryClient()
+/**
+ * This is an experimental feature that stores the results in localStorage
+ * https://react-query.tanstack.com/plugins/persist-localstorage
+ * ThrottleTime is the time in ms that the cache is saved to the disk
+ */
 persistWithLocalStorage(queryClient, { throttleTime: 60000 })
 
 const App = () => {
@@ -26,6 +32,7 @@ const App = () => {
         </title>
       </Helmet>
       <Router>
+        <NotFoundPage default />
         <Home path="/" />
         <Settings path="/settings" />
       </Router>
@@ -33,7 +40,7 @@ const App = () => {
       {showDevtools && (
         <ReactQueryDevtools
           position="top-right"
-          panelProps={{ style: { bottom: '50px' } }}
+          panelProps={{ style: { bottom: '60px' } }}
         />
       )}
     </QueryClientProvider>
