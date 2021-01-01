@@ -56,7 +56,10 @@ const Home = () => {
     <Layout>
       <div
         className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-        style={{ gridGap: design.gapless ? 0 : undefined }}
+        style={{
+          gridGap: design.gapless ? 0 : undefined,
+          margin: design.gapless ? '-1.5rem -1.5rem 0 -1.5rem' : undefined,
+        }}
       >
         {sorted.map((p) => (
           <Post
