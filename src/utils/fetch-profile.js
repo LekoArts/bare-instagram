@@ -1,5 +1,11 @@
 const fetchProfile = async (input) => {
-  const res = await fetch(`https://www.instagram.com/${input}/?__a=1`)
+  const URL = `https://www.instagram.com/${input}/?__a=1`
+  const res = await fetch(URL)
+
+  if (res.url !== URL) {
+    throw new Error(`Couldn't load the information. Please try again later.`)
+  }
+
   const json = await res.json()
   const { graphql } = json
 

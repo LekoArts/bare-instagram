@@ -1,22 +1,16 @@
 import * as React from 'react'
 import { useQueries } from 'react-query'
 import Layout from '../components/layout'
+import Post from '../components/home/post'
+import { Loading, ErrorMessage } from '../components/information'
 import useNames from '../hooks/use-names'
 import useDesign from '../hooks/use-design'
 import { fetchPosts } from '../utils/fetch-posts'
-import Post from '../components/post'
-
-const Loading = () => (
-  <div className="text-center font-medium">Loading information...</div>
-)
-
-const ErrorMessage = ({ message }) => (
-  <div className="text-sm px-2 py-2 mt-2 bg-red-100 rounded">{message}</div>
-)
 
 const Home = () => {
   const [names] = useNames()
   const [design] = useDesign()
+
   const results = useQueries(
     names.map((name) => {
       return {
@@ -29,7 +23,16 @@ const Home = () => {
     })
   )
 
-  if (results.some((r) => r.isLoading)) {
+  if (names.length === 0) {
+    return (
+      <Layout>
+        No usernames defined. Please head over to the "Settings" screen and add
+        new users.
+      </Layout>
+    )
+  }
+
+  if (results.some((r) => r.isLoading || r.isFetching)) {
     return (
       <Layout>
         <Loading />

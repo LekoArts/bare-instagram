@@ -1,9 +1,10 @@
 import * as React from 'react'
-import useNames from '../hooks/use-names'
-import { getElByPropVal } from '../utils/get-element'
-import External from '../icons/external'
-import Video from '../icons/video'
-import Sidecar from '../icons/sidecar'
+import useNames from '../../hooks/use-names'
+import { getElByPropVal } from '../../utils/get-element'
+import { timestampToDate } from '../../utils/timestamp-to-date'
+import External from '../../icons/external'
+import Video from '../../icons/video'
+import Sidecar from '../../icons/sidecar'
 
 const Image = ({ picture, dimensions, isMinimal, isGapless }) => (
   <>
@@ -42,7 +43,7 @@ const Post = ({
 }) => {
   const [names] = useNames()
   const ownerInformation = getElByPropVal(names, 'id', owner)
-  const date = new Date(timestamp * 1000).toLocaleDateString(`de-DE`)
+  const date = timestampToDate(timestamp)
 
   if (isMinimal) {
     return (

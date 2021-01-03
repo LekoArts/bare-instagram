@@ -15,12 +15,12 @@ const queryClient = new QueryClient()
  * https://react-query.tanstack.com/plugins/persist-localstorage
  * ThrottleTime is the time in ms that the cache is saved to the disk
  */
-persistWithLocalStorage(queryClient, { throttleTime: 60000 })
+persistWithLocalStorage(queryClient, { throttleTime: 10000 })
 
 const App = () => {
   const { pathname } = useLocation()
   const isSettingsView = pathname === `/settings`
-  const showDevtools = false
+  const showDevtools = true
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -41,6 +41,10 @@ const App = () => {
         <ReactQueryDevtools
           position="top-right"
           panelProps={{ style: { bottom: '60px' } }}
+          toggleButtonProps={{ style: { right: '12px', bottom: 'auto' } }}
+          closeButtonProps={{
+            style: { right: '12px', bottom: 'auto', top: '6px' },
+          }}
         />
       )}
     </QueryClientProvider>

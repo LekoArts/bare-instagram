@@ -6,11 +6,7 @@ import * as React from 'react'
  */
 
 const Checkbox = ({ name, checked, onChange, desc }) => (
-  <label
-    htmlFor={name}
-    className="flex flex-row flex-nowrap justify-between"
-    style={{ cursor: 'pointer' }}
-  >
+  <label htmlFor={name} className="flex flex-row flex-nowrap justify-between">
     <span>{desc}</span>
     <input
       type="checkbox"
