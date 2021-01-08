@@ -99,6 +99,8 @@ const Post = ({
         <div
           className="px-4 py-2 text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800"
           style={{
+            wordBreak: `break-all`,
+            whiteSpace: `pre-wrap`,
             borderBottomLeftRadius: description
               ? isGapless
                 ? 0

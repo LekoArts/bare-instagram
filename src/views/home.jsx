@@ -25,7 +25,7 @@ const Home = () => {
 
   if (names.length === 0) {
     return (
-      <Layout>
+      <Layout className="text-center text-lg font-medium">
         No usernames defined. Please head over to the "Settings" screen and add
         new users.
       </Layout>
@@ -34,7 +34,7 @@ const Home = () => {
 
   if (results.some((r) => r.isLoading || r.isFetching)) {
     return (
-      <Layout>
+      <Layout className="text-lg">
         <Loading />
       </Layout>
     )

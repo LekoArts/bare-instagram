@@ -14,7 +14,7 @@ const UsernamesList = () => {
   }
 
   return (
-    <div className="flex flex-col space-y-3 mt-8">
+    <div className="flex flex-col space-y-3 mt-4">
       {names.length > 0 ? (
         names.map((n, index) => (
           <div

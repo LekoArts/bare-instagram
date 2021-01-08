@@ -3,6 +3,7 @@ import { useQuery } from 'react-query'
 import useNames from '../../hooks/use-names'
 import { fetchProfile } from '../../utils/fetch-profile'
 import Plus from '../../icons/plus'
+import { ErrorMessage } from '../information'
 
 const UsernamesForm = () => {
   const [value, setValue] = React.useState('')
@@ -33,7 +34,7 @@ const UsernamesForm = () => {
 
   return (
     <>
-      <form onSubmit={addName} className="flex flex-col">
+      <form onSubmit={addName} className="flex flex-col mb-4">
         <label
           htmlFor="add-new-username"
           className="mb-2 font-medium text-black text-xl dark:text-white"
@@ -61,11 +62,7 @@ const UsernamesForm = () => {
           </button>
         </div>
       </form>
-      {status === 'error' && (
-        <div className="text-sm text-black px-2 py-2 mt-4 bg-red-100 rounded">
-          {error.message}
-        </div>
-      )}
+      {status === 'error' && <ErrorMessage message={error.message} />}
     </>
   )
 }
