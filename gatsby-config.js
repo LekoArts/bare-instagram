@@ -10,6 +10,7 @@ module.exports = {
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-netlify',
+    'gatsby-plugin-gatsby-cloud',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
