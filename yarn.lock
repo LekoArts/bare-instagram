@@ -5359,6 +5359,17 @@ gatsby-page-utils@^0.8.0-next.0:
     lodash "^4.17.20"
     micromatch "^4.0.2"
 
+gatsby-plugin-gatsby-cloud@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-gatsby-cloud/-/gatsby-plugin-gatsby-cloud-0.0.5.tgz#f307376539fd24605e2cb9440e99c9fa01e360fd"
+  integrity sha512-XtxTpOSW5gy6td+n4kOodqTQzqftZvyFm9op+emVNHkMkSg3VJeA7NPbKGUkQzoieOraBOdBpqGQ7KbD8mvBbQ==
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+    fs-extra "^8.1.0"
+    kebab-hash "^0.1.2"
+    lodash "^4.17.20"
+    webpack-assets-manifest "^3.1.1"
+
 gatsby-plugin-manifest@^2.11.0-next.0:
   version "2.11.0-next.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.11.0-next.0.tgz#70b67fa97ec827b3d5fc1382ae502269b79531af"
